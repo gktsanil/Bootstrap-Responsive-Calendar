@@ -1,7 +1,60 @@
-$(".table-nav a").first().click(function(){
-  alert("Merhaba");
-});
-
-$(".table-nav a").last().click(function(){
-            alert("Merhaba");
+var d = new Date();
+    var index = d.getMonth();
+    $(document).ready(function(){
+        $( ".table-title span" ).text(monts[index] + ", " + String(year));
+    });
+    var monts = ["Ocak","Şubat","Mart","Nisan","Mayıs","Haziran","Temmuz","Ağustos","Eylül","Ekim","Kasım","Aralık"];
+    var years = [];
+    var year = d.getFullYear();
+    for(var i = 1900;i<2019;i++){
+        years.push(i);
+    }
+        $( ".table-title" ).click(function(){
+            index = d.getMonth();
+            year = d.getFullYear();
+            $( ".table-title span" ).text(monts[index] + ", " + String(year));
+        });
+    
+        $(".table-nav a").first().click(function(){
+            if(index==0){
+                $( ".table-title span" ).animate({
+                    height: "toggle"
+                  }, 100, function() {
+                      index=11;
+                year-=1;
+                    $( ".table-title span" ).fadeToggle();
+                    $( ".table-title span" ).text(monts[index] + ", " + String(year));
+                  });
+            }else{
+                index=index-1;
+                $( ".table-title span" ).animate({
+                    height: "toggle"
+                  }, 100, function() {
+                      $( ".table-title span" ).text(monts[index] + ", " + String(year));
+                    $( ".table-title span" ).fadeToggle();
+                  });
+                $( ".table-title span" ).text(monts[index] + ", " + String(year));
+            }
+        });
+        
+        $(".table-nav a").last().click(function(){
+            if(index==11){
+                $( ".table-title span" ).animate({
+                    height: "toggle"
+                  }, 100, function() {
+                      index=0;
+                year+=1;
+                    $( ".table-title span" ).fadeToggle();
+                    $( ".table-title span" ).text(monts[index] + ", " + String(year));
+                  });
+            }else{
+                index=index+1;
+                $( ".table-title span" ).animate({
+                    height: "toggle"
+                  }, 100, function() {
+                      $( ".table-title span" ).text(monts[index] + ", " + String(year));
+                    $( ".table-title span" ).fadeToggle();
+                  });
+                $( ".table-title span" ).text(monts[index] + ", " + String(year));
+            }
         });
