@@ -1,0 +1,7 @@
+$(".table-nav a").first().click(function(){
+  alert("Merhaba");
+});
+
+$(".table-nav a").last().click(function(){
+            alert("Merhaba");
+        });
